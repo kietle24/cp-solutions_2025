@@ -1,0 +1,44 @@
+Knapsack Problem - Fractional  
+EXEMPLE ": bài toán cái túi 
+Giả sử  : 
+cho m = 15  
+n = 7  
+nhưng mà giờ bỏ m = 25 (vượt quá khá năng chứa = 15 ) 
+hoặc tốn quá nhiều chi phí (Memmory )
+Constraint 
+  n <= Wi <= m 
+Objective 
+ max <= P 
+
+lợi nhuận tốt nhất : 
+1 4 5 2 3 1 
+8 21  17 12 7 5 = 
+
+
+thường sử dụng CT  :  p1  = vi / wi   
+
+TÓM TẮT HỆ THỐNG HÓA VÍ DỤ TỐI ƯU TẢI TRỌNG (FRACTIONAL KNAPSACK) DẠNG TEXT
+1. THIẾT LẬP BÀI TOÁN
+BÀI TOÁN: Tối ưu hóa Tải trọng (Load Optimization) dựa trên nguyên lý Tham lam (Greedy).
+MỤC TIÊU: Cực đại hóa Tổng Lợi nhuận Thuần (Maximize Total Net Profit).
+RÀNG BUỘC (W): Tải trọng Tối đa của xe tải = 1000 kg.
+PHƯƠNG PHÁP: Áp dụng thuật toán Tham lam dựa trên tỷ lệ.
+
+2. TIÊU CHÍ THAM LAM (GREEDY CRITERION)
+Tiêu chí để xác định ưu tiên là Tỷ lệ Hiệu suất (Value Density),
+ tức là Lợi nhuận Thuần trên mỗi kg trọng lượng.
+
+công thức  :  Pi = lợi nhuận Vi / Trọng lượng Wi 
+
+Đơn hàng,   Lợi nhuận (vi​),    Trọng lượng (wi​),      Tỷ lệ Pi​ (VND/kg),  Xếp hạng
+A,  "10,000,000",               200,                    "50,000",       1
+D,  "8,000,000",                200,                    "40,000",       2
+B,  "15,000,000",               500,                    "30,000",       3
+C,  "3,000,000",                100,                     "30,000",       4 
+và sắp xếp theo độ ưu tiên 
+ 
+
+3. Kết quả Tối ưu Cuối cùng
+Các đơn hàng được chọn (100%): A, D, B, C.
+Tổng Trọng lượng đã sử dụng: $1000 {kg}.
+Tổng Lợi nhuận Tối đa (Optimal Solution): 36,000,000 VNĐ.

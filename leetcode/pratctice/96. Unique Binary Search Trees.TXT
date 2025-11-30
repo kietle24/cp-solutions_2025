@@ -1,0 +1,20 @@
+GIẢI THÍCH BÀI TOÁN  : 
+CHO MỘT NGUYÊN N TRẢ SỐ LƯỢNG BST DUY NHẤT VỀ MẶT CẤU TRÚC CÂY 
+(BST) CÓ CHÍNH XÁC LÀ N NODE 
+-> TỨC LÀ N NODE ĐÃ CHO XÁC ĐỊNH BAO NHIÊU CÂY BST 
+
+IDEA :  
+
+GIẢ SỬ CHỌN NODE ROOT BẤT KÌ CÁC NODE NHỎ BÊN TRÁI NODE LỚN BÊN PHẢI 
+
+THÌ SẼ MÔ HÌNH HÓA NÓ RA ĐƯỢC C* C + LẠI VỚI NHAU (CTALAN NUMBER )
+
+FIRST  : TA CẦN ĐỊNH NGHĨA MỘT HÀM PHỤ CALATAN_NUMBER 
+ĐẦU VÀO N : SỐ LƯỢNG NODE TRONG CÂY BST 
+TRẢ VỀ KIỂM INT < SỐ LƯỢNG CÂY BST CHO N <= 19 
+
+INT CATALAN(N+1) 
+    KHAI BÁO BIẾN TẠM THỜI CATALAN KICH THUOC N + 1
+    ->DE LUU TRU CAC KET QUA C[0] C[1]
+
+    chốt sử dụng công thức đệp quy truy hoặc catalan đều được 

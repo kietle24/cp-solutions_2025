@@ -1,0 +1,5 @@
+Through before CODEING :  
+bài này khá giống với bài 96 nhưng không thể sử dụng quy hoạch động Phương Pháp sử dụng số Catalan 
+mà cần trả về tất các cấu trúc BST  
+
+Aproach : ? 

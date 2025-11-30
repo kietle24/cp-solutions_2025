@@ -1,0 +1,145 @@
+Dưới đây là **thuật toán DFS cho bài LeetCode 257 – Binary Tree Paths**, chia **từng phần rõ ràng** và **phân tích cụ thể từng bước**:
+
+---
+
+## **I. Mục tiêu bài toán**
+
+> Tìm **tất cả các đường đi từ nút gốc (root)** đến **các nút lá (leaf)** của cây nhị phân.
+
+* **Đầu vào:** cây nhị phân `root`
+* **Đầu ra:** danh sách chuỗi mô tả đường đi, ví dụ
+  `["1->2->5", "1->3"]`
+
+---
+
+## **II. Ý tưởng cốt lõi**
+
+Sử dụng **DFS (Depth-First Search)** — duyệt **sâu từng nhánh** của cây từ gốc xuống lá.
+Tại mỗi bước:
+
+* Thêm giá trị node vào **đường đi hiện tại (path)**.
+* Nếu node là **lá**, lưu chuỗi đường đi đó vào kết quả.
+* Nếu node còn nhánh con → tiếp tục đệ quy xuống trái và phải.
+
+---
+
+## **III. Cấu trúc tổng thể của thuật toán**
+
+### 1. Hàm chính
+
+Khởi tạo danh sách kết quả và gọi DFS từ gốc:
+
+```cpp
+vector<string> binaryTreePaths(TreeNode* root) {
+    vector<string> res;
+    if (!root) return res;
+    dfs(root, "", res);
+    return res;
+}
+```
+
+### 2. Hàm DFS đệ quy
+
+```cpp
+void dfs(TreeNode* node, string path, vector<string>& res)
+```
+
+---
+
+## **IV. Phân tích từng bước trong DFS**
+
+### **Bước 1: Kiểm tra điều kiện dừng**
+
+```cpp
+if (!node) return;
+```
+
+* Nếu node rỗng (null) → dừng, không làm gì thêm.
+* Tránh lỗi truy cập con trỏ null.
+
+---
+
+### **Bước 2: Cập nhật đường đi hiện tại**
+
+```cpp
+path += to_string(node->val);
+```
+
+* Thêm giá trị node hiện tại vào chuỗi đường đi.
+* Ví dụ: đang ở `1`, path = `"1"`, đi sang trái `2` → `"1->2"`.
+
+---
+
+### **Bước 3: Kiểm tra node lá**
+
+```cpp
+if (!node->left && !node->right)
+    res.push_back(path);
+```
+
+* Nếu không có nhánh trái và phải → node là **lá**.
+* Lưu lại đường đi hiện tại vào danh sách kết quả.
+
+---
+
+### **Bước 4: Nếu chưa phải lá → tiếp tục đi sâu**
+
+```cpp
+else {
+    path += "->";
+    dfs(node->left, path, res);
+    dfs(node->right, path, res);
+}
+```
+
+* Thêm “→” để nối sang bước tiếp theo.
+* Gọi lại DFS cho **trái** và **phải**.
+* Mỗi lời gọi là **một nhánh mới của cây**.
+
+---
+
+## **V. Ví dụ minh họa**
+
+Cây:
+
+```
+    1
+   / \
+  2   3
+   \
+    5
+```
+
+Quá trình duyệt:
+
+| Lần | Node       | Path hiện tại | Hành động   |
+| --- | ---------- | ------------- | ----------- |
+| 1   | 1          | "1"           | đi trái     |
+| 2   | 2          | "1->2"        | đi phải     |
+| 3   | 5          | "1->2->5"     | là lá → lưu |
+| 4   | quay lại 1 | "1"           | đi phải     |
+| 5   | 3          | "1->3"        | là lá → lưu |
+
+Kết quả cuối:
+`["1->2->5", "1->3"]`
+
+---
+
+## **VI. Tư duy mở rộng**
+
+* Nếu bài yêu cầu tính **tổng đường đi**, ta chỉ cần thay việc lưu chuỗi bằng **tổng số học**.
+* Nếu cần tìm **đường đi thỏa điều kiện**, ta thêm `if (sum == target)` tại bước 3.
+
+---
+
+Bạn có muốn tôi viết thêm **phiên bản DFS dùng vector thay vì string (dễ hiểu cách backtrack)** không?
+
+
+trong quá trình tư duy lập trình 
+Tư duy sợ sai : 
+Tư duy nhớ máy móc 
+tư duy nhảy cóc 
+tư duy đợi hiểu hết mới làm 
+tư duy "chạy đủ là được rồi " -> code chạy được là dừng 
+-> hãy nghĩ có thể viết gọn, nhanh hơn  ,dễ đọc hơn  
+-> code được khác code giỏ 

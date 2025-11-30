@@ -1,0 +1,25 @@
+Bài Toán Tối Ưu Hóa (Optimization Problems)
+
+
+Bài toán Tối ưu hóa là một loại bài toán kỹ thuật mà mục tiêu là tìm ra một tập hợp các biến đầu vào thỏa mãn tất cả các 
+ràng buộc cho trước và cực đại hóa (Maximize) hoặc cực tiểu hóa (Minimize) một hàm mục tiêu (Objective Function) cụ thể.
+
+1. Cấu Trúc Kỹ Thuật
+
+Hàm Mục tiêu (Objective Function): Hàm $f(x)$ cần được cực đại hóa (lợi nhuận, giá trị) hoặc cực tiểu hóa 
+(chi phí, thời gian, khoảng cách)
+
+Các Ràng buộc (Constraints): Các điều kiện mà các biến đầu vào phải thỏa mãn. Ví dụ: ngân sách, sức chứa, giới hạn thời gian.
+
+Không gian Lời giải Khả thi (Feasible Solution Space): Tập hợp tất cả các lời giải $x$ thỏa mãn các ràng buộc.
+
+2 Phân loại bài toán kinh điển 
+Cực Đại Hóa :  Bài toán cái túi  KnapSack 
+Cực Tiểu hóa (Minimization)  :Bài toán Cây Bao Trùm Tối thiểu (MST), Bài toán Người Du lịch (TSP)
+
+3. Phương Pháp Tham Lam (Greedy Method)
+
+Phương pháp Tham lam (Greedy Method) là một kỹ thuật thiết kế giải thuật tìm kiếm lời giải khả thi nhất cục bộ (locally optimal) tại mỗi bước,
+ với hy vọng rằng chuỗi các lựa chọn cục bộ này sẽ dẫn đến lời giải tối ưu toàn cục (globally optimal).
+
+ 

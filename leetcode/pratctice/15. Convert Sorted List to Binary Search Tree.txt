@@ -1,0 +1,9 @@
+question  : 
+Given the head of liskedlist where
+element are sorted in ascesding oreder conver to AVG BST  
+Thought before Coding
+for each lisked list 0(n)  ? 
+
+
+
+

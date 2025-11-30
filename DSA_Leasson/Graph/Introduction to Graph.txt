@@ -1,0 +1,58 @@
+Đồ thị (Graph) 
+là tập hợp các đỉnh (vertex) và các cạnh (edge) nối giữa chúng.
+
+Mỗi đỉnh (node / vertex) 
+là một điểm (ví dụ: thành phố, người, máy tính...).
+Mỗi cạnh (edge) 
+thể hiện mối quan hệ / liên kết giữa hai đỉnh (ví dụ: đường đi, bạn bè, kết nối mạng...).
+
+G = (V, E)
+
+V là tập các đỉnh (vertices)
+E là tập các cạnh (edges)
+
+2. Các loại đồ thị
+| Loại                                | Mô tả                                              | Ví dụ minh họa                                                 |
+| ----------------------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
+| **Đồ thị vô hướng (Undirected)**    | Cạnh không có chiều → đi 2 chiều được.             | A—B nghĩa là A kết nối với B và ngược lại.                     |
+| **Đồ thị có hướng (Directed)**      | Mỗi cạnh có hướng (mũi tên).                       | A → B nghĩa là đi được từ A sang B nhưng không chắc từ B về A. |
+| **Đồ thị có trọng số (Weighted)**   | Mỗi cạnh có giá trị (trọng số / độ dài / chi phí). | A → B (5) nghĩa là chi phí từ A đến B là 5.                    |
+| **Đồ thị vô trọng số (Unweighted)** | Chỉ quan tâm có kết nối hay không.                 | A—B—C, không có giá trị trên cạnh.                             |
+
+Thuật Toán  BFS : Breadth First Search 
+BFS “biến” đồ thị gốc thành một cấu trúc tầng lớp (level graph)  
+quy luật là thuật toán duyệt đồ thị theo từng lớp thay vi 
+đi thật sâu như DFS BFS duyệt toàn bộ các đỉnh ở cùng một độ sâu trước rồi mới sang lớp tiếp theo 
+
+Có thể sử dụng thuật toán này đề tìm đường đi ngắn nhất xác định các điểm node mà gần nhau nhất giải mê cung 
+exemple  : 
+   A
+  / \
+ B   C
+ |   |
+ D   E
+
+| Bước | Queue (hàng đợi) | Đỉnh được thăm  | Mô tả hành động                                 |
+| ---- | ---------------- | --------------- | ----------------------------------------------- |
+| 1    | `[A]`            | —               | Bắt đầu từ **A**, đưa A vào hàng đợi            |
+| 2    | `[B, C]`         | `A`             | Lấy A ra, duyệt các đỉnh kề → thêm **B**, **C** |
+| 3    | `[C, D]`         | `A, B`          | Lấy B ra, duyệt kề → thêm **D**                 |
+| 4    | `[D, E]`         | `A, B, C`       | Lấy C ra, duyệt kề → thêm **E**                 |
+| 5    | `[E]`            | `A, B, C, D`    | Lấy D ra, không còn đỉnh kề mới                 |
+| 6    | `[]`             | `A, B, C, D, E` | Lấy E ra, hết hàng đợi → dừng                   |
+
+
+
+
+
+Thuật Toán DFS (duyệt theo chiều sấu )  : DEPTH FIRST SEARCH 
+1.VISTED 
+đỉnh Node này đã được đu đi qua ít nhất một lần . Ta đánh dấu là visted để không quay lại vòng lặp 
+
+2.EXPLORING  
+nói đến việc đang đi duyệt đệ quy các dỉnh liên kề với đỉnh hiện tại. Tức là node đang nằm giữa chừng trong ngăn stack đệ quy 
+sau khi duyệt các node con ta thoát chế độ exploring ->quay ngược lại ch 
+
+3. DFS Spanning Tree (cây bao trùm theo DFS) : 
+Spannning Tree 
+bạn giữ đúng những con đường mà bạn đã đi lần đầu tiên, bỏ hết đường dư → tạo thành cây.
