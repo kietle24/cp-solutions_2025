@@ -1,21 +1,33 @@
-    /**
-     * @class Solution
-     * @brief Calculates the sum of all root-to-leaf binary numbers in a binary tree.
-     * 
-     * This class provides functionality to traverse a binary tree and compute the sum
-     * of all numbers formed by root-to-leaf paths, where each path represents a binary number.
-     * 
-     * Example:
-     *     Input: [1,0,1,0,1,0,1]
-     *            1
-     *           / \
-     *          0   1
-     *         / \ / \
-     *        0  1 0  1
-     *     Output: 22
-     *     Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
-     */
+    // Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 
+/**
+ * @class Solution
+ * @brief Calculates the sum of all root-to-leaf binary numbers in a binary tree.
+ * 
+ * This class provides functionality to traverse a binary tree and compute the sum
+ * of all numbers formed by root-to-leaf paths, where each path represents a binary number.
+ * 
+ * Example:
+ *     Input: [1,0,1,0,1,0,1]
+ *            1
+ *           / \
+ *          0   1
+ *         / \ / \
+ *        0  1 0  1
+ *     Output: 22
+ *     Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
+ */
+
+class Solution {
+public:
     /**
      * @brief Computes the sum of all root-to-leaf binary numbers.
      * 
@@ -25,7 +37,13 @@
      * Time Complexity: O(n) where n is the number of nodes in the tree
      * Space Complexity: O(h) where h is the height of the tree (recursion stack)
      */
+    int sumRootToLeaf(TreeNode *root) {
+        int total = 0;
+        dfs(root, 0, total);
+        return total;
+    }
 
+private:
     /**
      * @brief Helper function that performs depth-first search to calculate path sums.
      * 
@@ -40,22 +58,17 @@
      * Base case: When a leaf node is reached (both children are NULL), the path sum
      * is added to the total.
      */
-    class Solution { 
-        public : 
-        int sumRootToLeaf ( TreeNode *root ) { 
-            int total =  0 ; 
-            dfs(root ,  0 , total ) ; 
-            return total ; 
+    void dfs(TreeNode* root, int pathsum, int &total) {
+        if(root == nullptr) return;
         
+        pathsum = pathsum * 2 + root->val;
+        
+        if(root->left == nullptr && root->right == nullptr) {
+            total += pathsum;
+            return;
         }
-        void dfs(TreeNode* root , int pathsum , int &total) { 
-            if(root == NULL ) return ; 
-            pathsum = pathsum*2 + root->val ; 
-            if(root->left == NULL && root->right == NULL){
-                total += pathsum ; 
-                return ;
-            }
-            dfs(root->left , pathsum , total ); 
-            dfs(root->right , pathsum , total );
-        }
-    };
+        
+        dfs(root->left, pathsum, total);
+        dfs(root->right, pathsum, total);
+    }
+};
